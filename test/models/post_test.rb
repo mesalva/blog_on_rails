@@ -6,7 +6,7 @@ class PostTest < ActiveSupport::TestCase
   # end
   
   setup do
-  	Post.destroy_all
+  	Post.delete_all
     @post = Post.create(author: "teste", title: "Title", body: "body", created_at: Time.now)
   end
 
