@@ -6,7 +6,9 @@ class PostsControllerTest < ActionController::TestCase
 
   setup do
     Post.destroy_all
-    @post = Post.create(author: "teste", title: "Title", body: "body", created_at: Time.now)
+    User.delete_all
+    @user = User.create(name: "name", email: "email@email.com", password: "password")
+    @post = Post.create(author: "teste", title: "Title", body: "body", created_at: Time.now, user: @user)
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, post: { author: @post.author, body: @post.body, created_at: @post.created_at, title: 'Title 2' }
+      post :create, post: { author: @post.author, body: @post.body, created_at: @post.created_at, title: 'Title 2', user:@user }
     end
 
     assert_response :created
@@ -79,7 +81,7 @@ class PostsControllerTest < ActionController::TestCase
   def populate_posts
     Post.destroy_all
     100.times do | index |
-      Post.create(author: "teste", title: "Title #{index}", body: "body", created_at: Time.now)
+      Post.create(author: "teste", title: "Title #{index}", body: "body", created_at: Time.now, user: @user)
     end
   end
 

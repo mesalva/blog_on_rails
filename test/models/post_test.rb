@@ -6,8 +6,10 @@ class PostTest < ActiveSupport::TestCase
   # end
   
   setup do
-  	Post.delete_all
-    @post = Post.create(author: "teste", title: "Title", body: "body", created_at: Time.now)
+    Post.delete_all
+    User.delete_all
+    @user = User.create(name: "name", email: "email@email.com", password: "password")
+    @post = Post.create(author: "teste", title: "Title", body: "body", created_at: Time.now, user: @user)
   end
 
   test "should create a post sucessfully" do

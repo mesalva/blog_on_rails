@@ -7,8 +7,9 @@ class Entry
   field :author, type: String
   field :created_at, type: Time
   field :updated_at, type: Time
+  belongs_to :user
 
-  validates :body, :author,  presence: true, allow_blank: false
+  validates :body, :author, :user, presence: true, allow_blank: false
 
   before_create :set_created_at
 

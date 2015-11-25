@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :comments, :except => [:new, :edit, :show]
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
