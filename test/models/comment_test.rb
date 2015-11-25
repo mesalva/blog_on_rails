@@ -21,7 +21,7 @@ class CommentTest < ActiveSupport::TestCase
 	end
 
 	test "load a comment sucessfully" do
-		comment = Post.find(@post.id).comments.find(@comment.id)
+		comment = Comment.find(@comment.id)
 		assert_equal comment.post, @post
 	end
 

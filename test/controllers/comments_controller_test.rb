@@ -19,17 +19,11 @@ class CommentsControllerTest < ActionController::TestCase
 
    test "should destroy comment" do
 
-    p "---------counbt: #{Comment.count}"
-
-    Comment.all.each do |comment|
-      p "-------------------- #{comment.id}"
-    end
-
     assert_difference('Comment.count', -1) do
       delete :destroy, id: @comment
     end
 
-    assert_redirected_to comments_path
+    assert_response :no_content
   end
 
   

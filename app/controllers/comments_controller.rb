@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-    p "------------------- #{params[:comment][:post_id]}"
     @comment.post = Post.find(params[:comment][:post_id])
     respond_to do |format|
       if @comment.save

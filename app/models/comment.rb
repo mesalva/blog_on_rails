@@ -1,5 +1,5 @@
 class Comment < Entry
   
-  embedded_in :post 
+  belongs_to :post 
 
 end
